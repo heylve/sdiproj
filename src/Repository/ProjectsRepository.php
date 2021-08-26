@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\Projects;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Query\QueryBuilder;
+use Doctrine\ORM\QueryBuilder as ORMQueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -19,17 +21,47 @@ class ProjectsRepository extends ServiceEntityRepository
         parent::__construct($registry, Projects::class);
     }
 
-    public function findAllActiveProjects () 
+
+
+    /**
+     * @return Project[]
+     */
+    public function findAllActiveProjects () : array
         {
-            return $this->createQueryBuilder('p_a')
-            ->Where('p_a.ending_date is NULL')
+            return $this->findVisibleQuery()
             ->orderBy('p_a.id', 'ASC')
-            ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
 
     }
+ /**
+     * @return Project[]
+     */
+    /**
+     * 
+     * 
+     */
+
+    public function findLatestProjects() :array
+    {
+        return $this->findVisibleQuery()
+            ->setMaxResults(4)
+            ->orderBy('p_a.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+
+    }
+
+
+    private function findVisibleQuery() :ORMQueryBuilder
+     {
+        return $this->createQueryBuilder('p_a')
+            ->Where('p_a.ending_date is NULL');
+    }
+
+
     // /**
     //  * @return Projects[] Returns an array of Projects objects
     //  */

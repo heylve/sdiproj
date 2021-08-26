@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title  'PROJET '  %}
+
+{% block body %}
+<div class="jumbotron">
+<div class="container mt4 ">
+
+<p>  Description détaillée du projet </p>
+
+<div class="container">
+ <div class="row">
+    <div class="col-md-8"> image logo etc  jalons</div>
+    <div class="col-md-4"> <h1>{{projet.title}} </h1> <h2> info projets  {{projet.MOA}} </h2> 
+     <a href="#" class="btn-btn primary"> More info </a></div>
+ </div><!-- end row -->
+</div><!-- end container -->
+</div><!-- end jumbotonr -->
+
+<div class="row">
+<div class="col-md8">
+    <table class="table table-stripped">
+        <tr>
+        <td> principaux jalons</td>
+        <td> mise en production le </td>
+        </tr>
+        <tr>
+        <td>Principales difficutés rencontrées</td>
+        <td> Accroche NET-E etc...</td>
+        </tr>
+</div>
+</div>
+{% endblock body %}

@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ProjectsRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Cocur\Slugify\Slugify;
 /**
  * @ORM\Entity(repositoryClass=ProjectsRepository::class)
  */
@@ -66,6 +66,12 @@ class Projects
         return $this;
     }
 
+    public function getSlug() :string
+    {
+             return  (new Slugify())->slugify($this->title);
+        //echo $slugify->slugify('Hello World!'); // hello-world
+    }
+
     public function getDescription(): ?string
     {
         return $this->description;
@@ -78,30 +84,7 @@ class Projects
         return $this;
     }
 
-    public function getDateDebut(): ?\DateTimeInterface
-    {
-        return $this->date_debut;
-    }
-
-    public function setDateDebut(\DateTimeInterface $date_debut): self
-    {
-        $this->date_debut = $date_debut;
-
-        return $this;
-    }
-
-    public function getDateFin(): ?\DateTimeInterface
-    {
-        return $this->date_fin;
-    }
-
-    public function setDateFin(\DateTimeInterface $date_fin): self
-    {
-        $this->date_fin = $date_fin;
-
-        return $this;
-    }
-
+   
     public function getStartingDate(): ?\DateTimeInterface
     {
         return $this->starting_date;

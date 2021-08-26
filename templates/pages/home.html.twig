@@ -3,9 +3,30 @@
 {% block title  'Projets SDI ' %}
 {% block body %}
 <div class="jumbotron text-center">
-<div class="container">
+    <div class="container">
 <h1> Bienvenue  sur la homepage  PROJETS SDI</h1>
 <p>  Liste des projets en cours  </p>
-</div>
+        <div class="container">
+            <h2> les derniers projects en cours</h2>
+            <div class="row flex">
+            
+            {%  for projet in projets %}
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 div class="card-title">
+                            <a href="{{ path ('projects.show',{id: projet.id, slug: projet.slug})}}">{{projet.title}}</a> 
+                            </h5>
+                            <p> <div class="card-text"> {{projet.description}}}</p>
+                            </div>
+                            <div class="text-primary">{{projet.MOA}}</div>
+                        </div>
+                    </div>
+                </div>
+            {%endfor%} 
+            </div>
+
+        </div>
+    </div>
 </div>
 {% endblock body %}
