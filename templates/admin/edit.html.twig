@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block title  ' Editer le prject  SDI : {{ project.title}} ' %}
+{% block body %}
+    <div class="container mt4">
+        <h2>Editer le projet</h2>
+        {{ form_start(form) }}
+            {{form_widget(form)}}
+            <a name="" id="" class="btn btn-primary" href="#" role="button">Editer</a>
+            <!-- <button class="btn alert"> editer</button>
+        {{form_end(form)}}
+    </div>
+{% endblock body %}
